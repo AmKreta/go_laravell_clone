@@ -3,16 +3,15 @@ package helper
 import (
 	"log"
 	"os"
-	"strconv"
 )
 
-func getDefaultEnvConfig(AppName string, Debug bool) string {
+func getDefaultEnvConfig(AppName string) string {
 	var sample_config = `
 	# Give your application a unique name (no spaces)
 	APP_NAME=` + AppName + `
 
 	# false for production, true for development
-	DEBUG=` + strconv.FormatBool(Debug) + `
+	DEBUG=false
 
 	# the port should we listen on
 	PORT=4000
@@ -69,9 +68,9 @@ func getDefaultEnvConfig(AppName string, Debug bool) string {
 	return sample_config
 }
 
-func Create_dontenv(path, AppName string, Debug bool) error {
+func Create_dontenv(path, AppName string) error {
 	err := CreateFileWithHandler(path, ".env", func(f *os.File) {
-		default_config := getDefaultEnvConfig(AppName, Debug)
+		default_config := getDefaultEnvConfig(AppName)
 		_, err := f.WriteString(default_config)
 		if err != nil {
 			log.Fatal(err)

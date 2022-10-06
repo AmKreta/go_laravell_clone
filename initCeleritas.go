@@ -8,7 +8,7 @@ import (
 	"github.com/AmKreta/laravel_clone/src/helper"
 )
 
-func initApplication(AppName string, Debug bool) *applications {
+func initApplication(AppName string) *applications {
 	path, err := os.Getwd()
 
 	if err != nil {
@@ -25,7 +25,6 @@ func initApplication(AppName string, Debug bool) *applications {
 	// init celeratas
 	cel := &celeritas.Celeritas{
 		AppName: AppName,
-		Debug:   Debug,
 	}
 	err = cel.New(new_path)
 

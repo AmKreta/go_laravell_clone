@@ -11,7 +11,7 @@ type applications struct {
 }
 
 func main() {
-	amk := initApplication("amk", true)
+	amk := initApplication("amk")
 
-	fmt.Printf("%+v", amk)
+	fmt.Println("debug", amk.App.Debug)
 }
